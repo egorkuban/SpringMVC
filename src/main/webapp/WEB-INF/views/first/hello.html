@@ -7,10 +7,13 @@
 <ul>
     <li><a href="/bye">Goodbye</a> </li>
     <li><a href="/exit">Exit</a> </li>
+    <li><a href="/calculator">Calculator</a></li>
+    <li><a href="/calculator?a=2&b=2&action=addition">Calculator with parametrs</a></li>
     <li><a href="/">Home</a> </li>
 </ul>
 <body>
-<h1>Hello World!</h1>
+<h1>Hello World!
+    <p th:text="${message}" /> </h1>
 <h2>You are wonderful!</h2>
 </body>
 </html>
