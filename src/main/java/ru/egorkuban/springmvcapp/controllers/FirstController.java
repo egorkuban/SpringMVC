@@ -30,26 +30,26 @@ public class FirstController {
     }
 
     @GetMapping("/calculator")
-    public String calculator(@RequestParam(value = "a",required = false) Integer a,
-                             @RequestParam(value = "b",required = false) Integer b,
-                             @RequestParam(value = "action",required = false) String action,
+    public String calculator(@RequestParam(value = "a", required = false) Integer a,
+                             @RequestParam(value = "b", required = false) Integer b,
+                             @RequestParam(value = "action", required = false) String action,
                              Model model) {
-        switch (action) {
-            case "multiplication":
-                model.addAttribute("message", "result = " + (a * b));
-                break;
-            case "addition":
-                model.addAttribute("message", "result = " + (a + b));
-                break;
-            case "subtraction" :
-                model.addAttribute("message","result = " + (a-b));
-                break;
-            case "division":
-                model.addAttribute("message","result = " + (a/b));
-                break;
-            default:
-                model.addAttribute("message","You have not entered " + a + b + action );
+        double result;
 
+        if ("multiplication".equals(action)) {
+            result = a * b;
+            model.addAttribute("message", "result = " + result);
+        } else if ("addition".equals(action)) {
+            result = a + b;
+            model.addAttribute("message", "result = " + result);
+        } else if ("subtraction".equals(action)) {
+            result = a - b;
+            model.addAttribute("message", "result = " + result);
+        } else if ("division".equals(action)) {
+            result = a / (double) b;
+            model.addAttribute("message", "result = " + result);
+        } else {
+            model.addAttribute("message", "You entered an invalid parameter");
         }
         return "first/calculator";
     }
